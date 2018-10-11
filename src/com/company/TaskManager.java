@@ -9,14 +9,18 @@ public class TaskManager {
         this.mode = null;
     }
 
-    public void run(){
+    void run(){
         TaskList tasks = new TaskList();
         Ui UI = new Ui();
+        String line;
         UI.showMessage("Welcome to TaskManager-Level6!");
         UI.showMessage("Mode(File Read/Key-in/exit): ");
-        if(UI.readUserCommand().equals("File Read")){
+        line = UI.readUserCommand();
+        if(line.equals("File Read")){
+            UI.showMessage("You enter the key-in mode successfully");
             Process.FileReadMode(UI,tasks);
-        }else if(UI.readUserCommand().equals("Key-in")){
+        }else if(line.equals("Key-in")){
+            UI.showMessage("You enter the key-in mode successfully");
             Process.key_in(UI,tasks);
         }
 

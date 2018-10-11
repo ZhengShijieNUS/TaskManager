@@ -5,23 +5,23 @@ import java.util.ArrayList;
 public class TaskList {
     private ArrayList<Task> tasks;
 
-    public TaskList(){
-
+    TaskList(){
+        this.tasks = new ArrayList<>();
     }
 
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
 
-    public void addTask(Task t){
+    void addTask(Task t){
         this.tasks.add(t);
     }
 
-    public Task getTasksAtIndex(int n) {
+    Task getTasksAtIndex(int n) {
         return tasks.get(n);
     }
 
-    public Task removeTask(int n){
+    Task removeTask(int n){
         return tasks.remove(n);
     }
 
@@ -37,7 +37,7 @@ public class TaskList {
         return tasks.isEmpty();
     }
 
-    public int getSize(){
+    int getSize(){
         return tasks.size();
     }
 

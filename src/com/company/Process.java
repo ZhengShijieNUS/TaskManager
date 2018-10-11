@@ -2,21 +2,21 @@ package com.company;
 
 import java.io.IOException;
 
-public class Process {
+class Process {
 
-    public static void setCompleted(TaskList tasks,String line){
+    private static void setCompleted(TaskList tasks,String line){
         int index = Integer.parseInt(line.substring("done".length()).trim());
         tasks.getTasksAtIndex(index - 1).setDone(true);
         Print.TaskInList(tasks);
     }
 
     //key_in mode
-    public static void key_in(Ui UI,TaskList tasks){
+    static void key_in(Ui UI,TaskList tasks){
         String line;
         boolean isExit = false;
         while (!isExit) {
             try {
-                UI.showMessage("Your task?");
+                UI.showMessage("Your task?(todo/deadline/print/exit");
                 line = UI.readUserCommand();
                 switch (Parser.getCommandWord(line)) {
                     case "exit":
@@ -49,7 +49,7 @@ public class Process {
     }
 
     //File Read mode
-    public static void FileReadMode(Ui UI,TaskList tasks){
+    static void FileReadMode(Ui UI,TaskList tasks){
         UI.showMessage("Please enter the input file path: ");
         Storage storage = new Storage(UI.readUserCommand());
         UI.showMessage("Save to same file?(Y/N)  ");
