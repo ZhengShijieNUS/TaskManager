@@ -25,21 +25,16 @@ public class TaskList {
         return tasks.remove(n);
     }
 
-    public boolean removeTask(Task T){
-        return tasks.remove(T);
-    }
-
-    public void removeAllTask(){
+    void removeAllTask(){
         tasks.clear();
     }
 
-    public boolean isEmpty(){
+    boolean isEmpty(){
         return tasks.isEmpty();
     }
 
     int getSize(){
         return tasks.size();
     }
-
 
 }

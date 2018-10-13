@@ -21,6 +21,10 @@ public abstract class Task {
         }
     }
 
+    public String setDescription(String content){
+        return this.content = content;
+    }
+
     public abstract void setDone(boolean isDone);
 
     public abstract String getType();
@@ -28,4 +32,5 @@ public abstract class Task {
     public abstract boolean getIsDone();
 
     public abstract String getDoBy();
+
 }

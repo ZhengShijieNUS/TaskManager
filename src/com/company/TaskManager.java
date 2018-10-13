@@ -17,7 +17,7 @@ public class TaskManager {
         UI.showMessage("Mode(File Read/Key-in/exit): ");
         line = UI.readUserCommand();
         if(line.equals("File Read")){
-            UI.showMessage("You enter the key-in mode successfully");
+            UI.showMessage("You enter the File Read mode successfully");
             Process.FileReadMode(UI,tasks);
         }else if(line.equals("Key-in")){
             UI.showMessage("You enter the key-in mode successfully");

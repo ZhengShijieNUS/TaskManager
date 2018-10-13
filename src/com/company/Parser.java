@@ -2,13 +2,17 @@ package com.company;
 
 public class Parser {
 
-    public static String getCommandWord(String fullCommand) {
-        String command = fullCommand.split(" ")[0];//extract the first word of the user input
-        return command;
+    static String getCommandWord(String fullCommand) {
+        return fullCommand.split(" ")[0];//extract the first word of the user input
+    }
+
+    static int getIndex(String fullCommand){
+        String index = fullCommand.split(" ")[1];
+        return Integer.parseInt(index);
     }
 
     //Key-in method
-    public static todo createTodo(String fullCommand)throws TaskManagerException{
+    static todo createTodo(String fullCommand)throws TaskManagerException{
         String description = fullCommand.substring(getCommandWord(fullCommand).length()).trim();
         if(description.isEmpty()){
             throw new TaskManagerException("Empty description for TODO");
@@ -18,8 +22,7 @@ public class Parser {
         }
     }
 
-
-    public static deadline createDeadline(String fullCommand)throws TaskManagerException{
+    static deadline createDeadline(String fullCommand)throws TaskManagerException{
         int length_1="deadline".length();
         int length_2="/by".length();
 
@@ -41,7 +44,7 @@ public class Parser {
 
 
     //File-Read mode method
-    public static Task createTask(String line){
+    static Task createTask(String line){
         String[] content=line.split("\\|");
         for(int i=0;i<content.length;i++){
             content[i]=content[i].trim();
@@ -56,11 +59,11 @@ public class Parser {
         return null;
     }
 
-    public static Task FileRead_createTodo(String status,String content){
+    static Task FileRead_createTodo(String status,String content){
         return new todo(Converter.convertBoolean(status),content);
     }
 
-    public static Task FileRead_createDeadline(String status,String content,String doBy){
+    static Task FileRead_createDeadline(String status,String content,String doBy){
         return new deadline(Converter.convertBoolean(status),content,doBy);
     }
 

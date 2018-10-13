@@ -16,7 +16,7 @@ class Process {
         boolean isExit = false;
         while (!isExit) {
             try {
-                UI.showMessage("Your task?(todo/deadline/print/exit");
+                UI.showMessage("Your task?(todo/deadline/print/exit/remove index/removeAll");
                 line = UI.readUserCommand();
                 switch (Parser.getCommandWord(line)) {
                     case "exit":
@@ -37,7 +37,25 @@ class Process {
                         Print.printTasks(UI,tasks);
                         break;
                     case "done":
+                        if((Parser.getIndex(line)<1)||(Parser.getIndex(line)>tasks.getSize())){
+                            throw new TaskManagerException("The range is out of tasks size,please re-enter the value.");
+                        }
                         Process.setCompleted(tasks,line);
+                        break;
+                    case "remove":
+                        if(tasks.isEmpty()){
+                            throw new TaskManagerException("Task list is empty, you are not able to remove.");
+                        }
+                        if((Parser.getIndex(line)<1)||(Parser.getIndex(line)>tasks.getSize())){
+                            throw new TaskManagerException("The range is out of tasks size,please re-enter the value.");
+                        }
+                        tasks.removeTask(Parser.getIndex(line)-1);
+                        break;
+                    case"removeAll":
+                        if(tasks.isEmpty()){
+                            throw new TaskManagerException("Task list is empty, you are not able to remove.");
+                        }
+                        tasks.removeAllTask();
                         break;
                     default:
                         Print.printError(UI);
@@ -62,6 +80,7 @@ class Process {
             Process.key_in(UI,tasks);
             try {
                 storage.save(tasks);
+                Print.Printpath(storage);
             }catch(IOException e){
                 UI.showMessage("Problem encountered while updating file"+e.getMessage());
             }

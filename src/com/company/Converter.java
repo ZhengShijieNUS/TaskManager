@@ -2,11 +2,11 @@ package com.company;
 
 public class Converter {
 
-    public static boolean convertBoolean(String s){
+    static boolean convertBoolean(String s){
         return s.equals("1");
     }
 
-    public static String convertTaskToString(Task task){
+    static String convertTaskToString(Task task){
         String type;
         String isDone;
         String content;
@@ -33,4 +33,5 @@ public class Converter {
 
         return s;
     }
+
 }
