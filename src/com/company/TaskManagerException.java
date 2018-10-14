@@ -1,7 +1,7 @@
 package com.company;
 
-public class TaskManagerException extends Exception{
-    public TaskManagerException(String message){
+public class TaskManagerException extends Exception {
+    public TaskManagerException(String message) {
         super(message);
     }
 

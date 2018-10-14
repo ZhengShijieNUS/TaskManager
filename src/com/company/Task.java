@@ -8,20 +8,19 @@ public abstract class Task {
         this.content = content;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return this.content;
     }
 
-    public String getDescription(boolean onlyDescription){
-        if(onlyDescription) {
+    public String getDescription(boolean onlyDescription) {
+        if (onlyDescription) {
             return this.content;
-        }
-        else{
+        } else {
             return getDescription();
         }
     }
 
-    public String setDescription(String content){
+    public String setDescription(String content) {
         return this.content = content;
     }
 

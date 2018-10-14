@@ -17,11 +17,11 @@ public class Storage {
         this.output_path = input_path;
     }
 
-    String getOutputPath(){
+    String getOutputPath() {
         return this.output_path;
     }
 
-    void setOutput_path(String output_path){
+    void setOutput_path(String output_path) {
         this.output_path = output_path;
     }
 
@@ -41,12 +41,12 @@ public class Storage {
         }
     }
 
-    void save(TaskList tasks) throws IOException{
+    void save(TaskList tasks) throws IOException {
         //Files.delete(Paths.get(path));
         //FileWriter fw = new FileWriter(path,true);
         FileWriter fw = new FileWriter(output_path);
-        for(int i = 0; i < tasks.getSize(); i++){
-            String s=Converter.convertTaskToString(tasks.getTasksAtIndex(i));
+        for (int i = 0; i < tasks.getSize(); i++) {
+            String s = Converter.convertTaskToString(tasks.getTasksAtIndex(i));
             fw.write(s);
             fw.write(System.lineSeparator());
         }

@@ -1,6 +1,6 @@
 package com.company;
 
-public class todo extends Task{
+public class todo extends Task {
     protected boolean isDone;
 
     public todo(String content) {
@@ -9,42 +9,44 @@ public class todo extends Task{
         this.type = "todo";
     }
 
-    public todo(boolean status,String content){
+    public todo(boolean status, String content) {
         super(content);
-        this.isDone=status;
+        this.isDone = status;
         this.type = "todo";
     }
 
     @Override
     public String getDescription() {
         String done;
-        if(isDone){
+        if (isDone) {
             done = "Yes";
-        }else{
+        } else {
             done = "No";
         }
-        return super.getDescription()+System.lineSeparator()+"is done? " + done;
+        return super.getDescription() + System.lineSeparator() + "is done? " + done;
     }
 
-    public String getDescription(boolean onlyDescription){
-        if(onlyDescription){
+    public String getDescription(boolean onlyDescription) {
+        if (onlyDescription) {
             return this.content;
-        }else{
+        } else {
             return getDescription();
         }
     }
 
-    public void setDone(boolean isDone){
+    public void setDone(boolean isDone) {
         this.isDone = isDone;
     }
 
-    public String getType(){
+    public String getType() {
         return this.type;
     }
 
-    public boolean getIsDone(){
+    public boolean getIsDone() {
         return this.isDone;
     }
 
-    public String getDoBy(){return null;}
+    public String getDoBy() {
+        return null;
+    }
 }

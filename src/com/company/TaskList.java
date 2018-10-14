@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class TaskList {
     private ArrayList<Task> tasks;
 
-    TaskList(){
+    TaskList() {
         this.tasks = new ArrayList<>();
     }
 
@@ -13,7 +13,7 @@ public class TaskList {
         this.tasks = tasks;
     }
 
-    void addTask(Task t){
+    void addTask(Task t) {
         this.tasks.add(t);
     }
 
@@ -21,20 +21,24 @@ public class TaskList {
         return tasks.get(n);
     }
 
-    Task removeTask(int n){
+    Task removeTask(int n) {
         return tasks.remove(n);
     }
 
-    void removeAllTask(){
+    void removeAllTask() {
         tasks.clear();
     }
 
-    boolean isEmpty(){
+    boolean isEmpty() {
         return tasks.isEmpty();
     }
 
-    int getSize(){
+    int getSize() {
         return tasks.size();
+    }
+
+    void modifyDescription(int n, String content) {
+        getTasksAtIndex(n).setDescription(content);
     }
 
 }

@@ -2,19 +2,19 @@ package com.company;
 
 public class Converter {
 
-    static boolean convertBoolean(String s){
+    static boolean convertBoolean(String s) {
         return s.equals("1");
     }
 
-    static String convertTaskToString(Task task){
+    static String convertTaskToString(Task task) {
         String type;
         String isDone;
         String content;
         String doBy;
 
-        if(task.getIsDone()){
+        if (task.getIsDone()) {
             isDone = "1";
-        }else{
+        } else {
             isDone = "0";
         }
 
@@ -22,13 +22,13 @@ public class Converter {
 
         String s = null;
 
-        if(task.getType().equals("todo")){
+        if (task.getType().equals("todo")) {
             type = "T";
-            s = type+" | "+isDone+" | "+content;
-        }else if(task.getType().equals("deadline")){
+            s = type + " | " + isDone + " | " + content;
+        } else if (task.getType().equals("deadline")) {
             type = "D";
             doBy = task.getDoBy();
-            s = type+" | "+isDone+" | "+content+" | "+doBy;
+            s = type + " | " + isDone + " | " + content + " | " + doBy;
         }
 
         return s;
