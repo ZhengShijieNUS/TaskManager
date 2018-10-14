@@ -1,6 +1,6 @@
-package com.company;
+package com.company.ProcessManageObject;
 
-import java.io.IOException;
+import com.company.Tasks.TaskList;
 
 public class TaskManager {
     private String mode;
@@ -9,7 +9,7 @@ public class TaskManager {
         this.mode = null;
     }
 
-    void run() {
+    public void run() {
         TaskList tasks = new TaskList();
         Ui UI = new Ui();
         String line;
@@ -21,11 +21,11 @@ public class TaskManager {
             switch (line) {
                 case "File Read":
                     UI.showMessage("You enter the File Read mode successfully");
-                    Process.FileReadMode(UI, tasks);
+                    com.company.ProcessMethodClass.Process.FileReadMode(UI, tasks);
                     break;
                 case "Key-in":
                     UI.showMessage("You enter the key-in mode successfully");
-                    Process.key_in(UI, tasks);
+                    com.company.ProcessMethodClass.Process.key_in(UI, tasks);
                     break;
             }
 

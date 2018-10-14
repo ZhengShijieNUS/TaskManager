@@ -1,12 +1,17 @@
-package com.company;
+package com.company.ProcessMethodClass;
+
+import com.company.ProcessManageObject.TaskManagerException;
+import com.company.Tasks.Task;
+import com.company.Tasks.deadline;
+import com.company.Tasks.todo;
 
 public class Parser {
 
-    static String getCommandWord(String fullCommand) {
+    public static String getCommandWord(String fullCommand) {
         return fullCommand.split(" ")[0];//extract the first word of the user input
     }
 
-    static int getIndex(String fullCommand) throws Exception{
+    public static int getIndex(String fullCommand) throws Exception{
         try {
             return Integer.parseInt(fullCommand.split(" ")[1]);
         } catch (Exception e) {
@@ -14,7 +19,7 @@ public class Parser {
         }
     }
 
-    static String getContent(String fullCommand) throws TaskManagerException {
+    public static String getContent(String fullCommand) throws TaskManagerException {
         if (fullCommand.contains("with")) {
             return fullCommand.substring(fullCommand.indexOf("with") + "with".length()).trim();
         } else {
@@ -24,7 +29,7 @@ public class Parser {
     }
 
     //Key-in method
-    static todo createTodo(String fullCommand) throws TaskManagerException {
+    public static todo createTodo(String fullCommand) throws TaskManagerException {
         String description = fullCommand.substring(getCommandWord(fullCommand).length()).trim();
         if (description.isEmpty()) {
             throw new TaskManagerException("Empty description for TODO");
@@ -33,7 +38,7 @@ public class Parser {
         }
     }
 
-    static deadline createDeadline(String fullCommand) throws TaskManagerException {
+    public static deadline createDeadline(String fullCommand) throws TaskManagerException {
         String description = fullCommand.substring(getCommandWord(fullCommand).length()).trim();
         if (description.isEmpty()) {
             throw new TaskManagerException("Empty description for DEADLINE");
@@ -48,7 +53,7 @@ public class Parser {
 
 
     //File-Read mode method
-    static Task createTask(String line) {
+    public static Task createTask(String line) {
         String[] content = line.split("\\|");
         for (int i = 0; i < content.length; i++) {
             content[i] = content[i].trim();
@@ -63,7 +68,7 @@ public class Parser {
         return null;
     }
 
-    static Task FileRead_createTodo(String status, String content) {
+    public static Task FileRead_createTodo(String status, String content) {
         return new todo(Converter.convertBoolean(status), content);
     }
 

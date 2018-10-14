@@ -1,4 +1,4 @@
-package com.company;
+package com.company.ProcessManageObject;
 
 public class TaskManagerException extends Exception {
     public TaskManagerException(String message) {

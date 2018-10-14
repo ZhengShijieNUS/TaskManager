@@ -1,12 +1,14 @@
-package com.company;
+package com.company.ProcessMethodClass;
+
+import com.company.Tasks.Task;
 
 public class Converter {
 
-    static boolean convertBoolean(String s) {
+    public static boolean convertBoolean(String s) {
         return s.equals("1");
     }
 
-    static String convertTaskToString(Task task) {
+    public static String convertTaskToString(Task task) {
         String type;
         String isDone;
         String content;

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Tasks;
 
 public abstract class Task {
     protected String content;

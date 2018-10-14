@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Tasks;
 
 public class todo extends Task {
     protected boolean isDone;

@@ -1,11 +1,13 @@
-package com.company;
+package com.company.Tasks;
+
+import com.company.Tasks.Task;
 
 import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> tasks;
 
-    TaskList() {
+    public TaskList() {
         this.tasks = new ArrayList<>();
     }
 
@@ -13,31 +15,31 @@ public class TaskList {
         this.tasks = tasks;
     }
 
-    void addTask(Task t) {
+    public void addTask(Task t) {
         this.tasks.add(t);
     }
 
-    Task getTasksAtIndex(int n) {
+    public Task getTasksAtIndex(int n) {
         return tasks.get(n);
     }
 
-    Task removeTask(int n) {
+    public Task removeTask(int n) {
         return tasks.remove(n);
     }
 
-    void removeAllTask() {
+    public void removeAllTask() {
         tasks.clear();
     }
 
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return tasks.isEmpty();
     }
 
-    int getSize() {
+    public int getSize() {
         return tasks.size();
     }
 
-    void modifyDescription(int n, String content) {
+    public void modifyDescription(int n, String content) {
         getTasksAtIndex(n).setDescription(content);
     }
 

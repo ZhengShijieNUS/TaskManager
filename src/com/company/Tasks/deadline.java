@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Tasks;
 
 public class deadline extends todo {
     protected String doBy;

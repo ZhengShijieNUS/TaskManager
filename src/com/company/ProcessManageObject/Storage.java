@@ -1,4 +1,9 @@
-package com.company;
+package com.company.ProcessManageObject;
+
+import com.company.ProcessMethodClass.Converter;
+import com.company.ProcessMethodClass.Parser;
+import com.company.ProcessMethodClass.Print;
+import com.company.Tasks.TaskList;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,20 +17,20 @@ public class Storage {
     private String input_path;
     private String output_path;
 
-    Storage(String input_path) {
+    public Storage(String input_path) {
         this.input_path = input_path;
         this.output_path = input_path;
     }
 
-    String getOutputPath() {
+    public String getOutputPath() {
         return this.output_path;
     }
 
-    void setOutput_path(String output_path) {
+    public void setOutput_path(String output_path) {
         this.output_path = output_path;
     }
 
-    boolean load(TaskList tasks) {
+    public boolean load(TaskList tasks) {
         try {
             List<String> lines = getLines(input_path);
             for (String line : lines) {
@@ -41,7 +46,7 @@ public class Storage {
         }
     }
 
-    void save(TaskList tasks) throws IOException {
+    public void save(TaskList tasks) throws IOException {
         //Files.delete(Paths.get(path));
         //FileWriter fw = new FileWriter(path,true);
         FileWriter fw = new FileWriter(output_path);
@@ -54,7 +59,7 @@ public class Storage {
     }
 
     //helper function on read files
-    static List<String> getLines(String path) throws FileNotFoundException {
+    public static List<String> getLines(String path) throws FileNotFoundException {
         List<String> store = new ArrayList<>();
         File f = new File(path);
         Scanner s = new Scanner(f);

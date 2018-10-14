@@ -1,8 +1,13 @@
-package com.company;
+package com.company.ProcessMethodClass;
+
+import com.company.ProcessManageObject.Storage;
+import com.company.ProcessManageObject.TaskManagerException;
+import com.company.ProcessManageObject.Ui;
+import com.company.Tasks.TaskList;
 
 import java.io.IOException;
 
-class Process {
+public class Process {
 
     private static void setCompleted(TaskList tasks, String line) throws NumberFormatException {
         try {
@@ -15,7 +20,7 @@ class Process {
     }
 
     //key_in mode
-    static void key_in(Ui UI, TaskList tasks) {
+    public static void key_in(Ui UI, TaskList tasks) {
         String line;
         boolean isExit = false;
         while (!isExit) {
@@ -70,7 +75,7 @@ class Process {
     }
 
     //File Read mode
-    static void FileReadMode(Ui UI, TaskList tasks) {
+    public static void FileReadMode(Ui UI, TaskList tasks) {
         UI.showMessage("Please enter the input file path: ");
         Storage storage = new Storage(UI.readUserCommand());
         UI.showMessage("Save to same file?(Enter 'N' to save in different files,default will be save to the same file) ");
@@ -91,7 +96,7 @@ class Process {
         }
     }
 
-    static boolean checkValidity(TaskList tasks, int n) throws TaskManagerException {
+    public static boolean checkValidity(TaskList tasks, int n) throws TaskManagerException {
         if (tasks.isEmpty()) {
             throw new TaskManagerException("The task list is currently empty.");
         } else {
