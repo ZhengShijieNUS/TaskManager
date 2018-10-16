@@ -7,8 +7,17 @@ import com.company.Tasks.TaskList;
 
 import java.io.IOException;
 
+/**
+ * Process class stores all process that involved.Key-in mode and File Read mode implementation is defined here.
+ */
 public class Process {
-
+    /**
+     * The setCompleted method is a process that set the status of a specified task to be done.
+     *
+     * @param tasks is the specified task that wish to set to completed
+     * @param line  is the command,it should be like "done 5","done 3" etc.
+     * @throws NumberFormatException if the input command is illegal
+     */
     private static void setCompleted(TaskList tasks, String line) throws NumberFormatException {
         try {
             int index = Integer.parseInt(line.substring("done".length()).trim());
@@ -20,6 +29,16 @@ public class Process {
     }
 
     //key_in mode
+
+    /**
+     * The key_in method is the main process of the "Key-in" mode, it intakes a Ui object and TaskList object to process
+     * the key in mode.
+     * User can key in different command to modify the TaskList.
+     * The command keyword including: exit,todo,deadline,print,done,remove,removeAll,modify
+     * It will keep repeating until user enter "exit" or nothing entered.
+     * @param UI is the Ui that interact with user
+     * @param tasks is the TaskList that store all the tasks
+     */
     public static void key_in(Ui UI, TaskList tasks) {
         String line;
         boolean isExit = false;
@@ -75,6 +94,16 @@ public class Process {
     }
 
     //File Read mode
+
+    /**
+     * The FileReadMode is the method that intakes a Ui and TaskList that created.
+     * User should enter the path of input file.
+     * User may also choose whether to save the output into the same input file or into another file.
+     * After load all the tasks into the TaskList, user will enter the key-in mode and modify TaskList accordingly.
+     * All the content in the TaskList will be stored in the output file path after exit the key-in mode.
+     * @param UI is the Ui that interact with user
+     * @param tasks is the TaskList that store all the tasks
+     */
     public static void FileReadMode(Ui UI, TaskList tasks) {
         UI.showMessage("Please enter the input file path: ");
         Storage storage = new Storage(UI.readUserCommand());
@@ -96,6 +125,14 @@ public class Process {
         }
     }
 
+    /**
+     * The checkValidity is a process method that to check the input by user is legal.
+     * It's used for the command "done","remove","modify"
+     * @param tasks is the TaskList need to modified.
+     * @param n is the index that user wish to make changes.
+     * @return true if the input is valid.
+     * @throws TaskManagerException if the input is illegal.
+     */
     public static boolean checkValidity(TaskList tasks, int n) throws TaskManagerException {
         if (tasks.isEmpty()) {
             throw new TaskManagerException("The task list is currently empty.");

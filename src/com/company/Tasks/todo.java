@@ -1,14 +1,27 @@
 package com.company.Tasks;
 
+/**
+ * todo class is create a todo task.It's inheriting from Task class
+ */
 public class todo extends Task {
     protected boolean isDone;
 
+    /**
+     * Construct a todo task object
+     *
+     * @param content is the content that this todo task has.
+     */
     public todo(String content) {
         super(content);
         this.isDone = false;
         this.type = "todo";
     }
 
+    /**
+     * Construct a todo task when the status of this todo task is given
+     * @param status is the status of todo task
+     * @param content is the content of the todo task.
+     */
     public todo(boolean status, String content) {
         super(content);
         this.isDone = status;

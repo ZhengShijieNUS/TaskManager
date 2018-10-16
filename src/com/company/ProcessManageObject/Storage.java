@@ -13,23 +13,45 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Storage class that will help to load Tasks from the hard disk and save tasks to the hard disk.
+ */
 public class Storage {
     private String input_path;
     private String output_path;
 
+    /**
+     * Construct a Storage object.
+     *
+     * @param input_path
+     */
     public Storage(String input_path) {
         this.input_path = input_path;
         this.output_path = input_path;
     }
 
+    /**
+     * Get the output path that stored in the storage object.
+     * @return
+     */
     public String getOutputPath() {
         return this.output_path;
     }
 
+    /**
+     * To set the output path as what input
+     * @param output_path is the path that user wish to save to.
+     */
     public void setOutput_path(String output_path) {
         this.output_path = output_path;
     }
 
+    /**
+     * The load method is used to load tasks from a file to a TaskList. If the path of input file is not found. It will
+     * catch a exception and report to user.
+     * @param tasks is the TaskList that stored all tasks.
+     * @return true if load all tasks successfully.
+     */
     public boolean load(TaskList tasks) {
         try {
             List<String> lines = getLines(input_path);
@@ -46,6 +68,11 @@ public class Storage {
         }
     }
 
+    /**
+     * The save method is to save all the tasks from TaskList to a file.
+     * @param tasks is the TaskList that user use.
+     * @throws IOException if the the output path is wrong.
+     */
     public void save(TaskList tasks) throws IOException {
         //Files.delete(Paths.get(path));
         //FileWriter fw = new FileWriter(path,true);
@@ -58,6 +85,12 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * The getLines is a helper function that retrieve data from file and store all content in a List of String.
+     * @param path is the input path that user provide.
+     * @return a String list
+     * @throws FileNotFoundException if the file is not found.
+     */
     //helper function on read files
     public static List<String> getLines(String path) throws FileNotFoundException {
         List<String> store = new ArrayList<>();

@@ -1,5 +1,8 @@
 package com.company.Tasks;
 
+/**
+ * Task is a abstract class that define all the common attribute and method of a task.
+ */
 public abstract class Task {
     protected String content;
     protected String type;
@@ -8,6 +11,11 @@ public abstract class Task {
         this.content = content;
     }
 
+    /**
+     * Get description of a task
+     *
+     * @return the description.
+     */
     public String getDescription() {
         return this.content;
     }
