@@ -6,11 +6,6 @@ import com.company.Tasks.TaskList;
  * TaskManager class is the main class that contain the procedure of how the TaskManager works.
  */
 public class TaskManager {
-    private String mode;
-
-    public TaskManager() {
-        this.mode = null;
-    }
 
     /**
      * run() is the main method that contains the logic of how the program working.It will ask user to choose either File
@@ -29,11 +24,11 @@ public class TaskManager {
             switch (line.trim()) {
                 case "File Read":
                     UI.showMessage("You enter the File Read mode successfully");
-                    com.company.ProcessMethodClass.Process.FileReadMode(UI, tasks);
+                    com.company.ProcessMethodClass.Process.readFileMode(UI, tasks);
                     break;
                 case "Key-in":
                     UI.showMessage("You enter the key-in mode successfully");
-                    com.company.ProcessMethodClass.Process.key_in(UI, tasks);
+                    com.company.ProcessMethodClass.Process.keyInMode(UI, tasks);
                     break;
             }
 

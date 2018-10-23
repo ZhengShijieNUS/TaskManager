@@ -22,7 +22,7 @@ public class Process {
         try {
             int index = Integer.parseInt(line.substring("done".length()).trim());
             tasks.getTasksAtIndex(index - 1).setDone(true);
-            Print.TaskInList(tasks);
+            Print.printTaskInList(tasks);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("The content format is wrong.");
         }
@@ -39,7 +39,7 @@ public class Process {
      * @param UI is the Ui that interact with user
      * @param tasks is the TaskList that store all the tasks
      */
-    public static void key_in(Ui UI, TaskList tasks) {
+    public static void keyInMode(Ui UI, TaskList tasks) {
         String line;
         boolean isExit = false;
         while (!isExit) {
@@ -54,11 +54,11 @@ public class Process {
                     case "todo":
                         // todo: add code here
                         tasks.addTask(Parser.createTodo(line));
-                        Print.TaskInList(tasks);
+                        Print.printTaskInList(tasks);
                         break;
                     case "deadline":
                         tasks.addTask(Parser.createDeadline(line));
-                        Print.TaskInList(tasks);
+                        Print.printTaskInList(tasks);
                         break;
                     case "print":
                         // print all task
@@ -104,7 +104,7 @@ public class Process {
      * @param UI is the Ui that interact with user
      * @param tasks is the TaskList that store all the tasks
      */
-    public static void FileReadMode(Ui UI, TaskList tasks) {
+    public static void readFileMode(Ui UI, TaskList tasks) {
         UI.showMessage("Please enter the input file path: ");
         Storage storage = new Storage(UI.readUserCommand());
         UI.showMessage("Save to same file?(Enter 'N' to save in different files,default will be save to the same file) ");
@@ -115,10 +115,10 @@ public class Process {
         }
 
         if (storage.load(tasks)) {
-            Process.key_in(UI, tasks);
+            Process.keyInMode(UI, tasks);
             try {
                 storage.save(tasks);
-                Print.PrintPath(storage);
+                Print.printPath(storage);
             } catch (IOException e) {
                 UI.showMessage("Problem encountered while updating file" + e.getMessage());
             }

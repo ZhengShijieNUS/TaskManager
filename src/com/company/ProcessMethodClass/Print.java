@@ -41,7 +41,7 @@ public class Print {
      * The TaskInList is the method to print how many tasks are stored in the TaskList.
      * @param tasks is the TaskList that user interact with.
      */
-    public static void TaskInList(TaskList tasks) {
+    public static void printTaskInList(TaskList tasks) {
         System.out.println("Task in the list: " + tasks.getSize());
     }
 
@@ -49,7 +49,7 @@ public class Print {
      * The PrintPath is method that show the path that output is stored successfully.
      * @param storage is the storage that output stored.
      */
-    public static void PrintPath(Storage storage) {
+    public static void printPath(Storage storage) {
         System.out.println("The file is successfully save to" + storage.getOutputPath());
     }
 
