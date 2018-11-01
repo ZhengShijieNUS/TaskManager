@@ -129,7 +129,7 @@ public class Parser {
      * @param doBy is the deadline time that specified.
      * @return a new deadline task.
      */
-    static Task FileRead_createDeadline(String status, String content, String doBy) {
+    public static Task FileRead_createDeadline(String status, String content, String doBy) {
         return new deadline(Converter.convertBoolean(status), content, doBy);
     }
 
