@@ -1,11 +1,14 @@
 package com.company.Tasks;
 
+import java.util.Comparator;
+
 /**
  * Task is a abstract class that define all the common attribute and method of a task.
  */
-public abstract class Task {
+public abstract class Task{
     protected String content;
     protected String type;
+    protected int priority;
 
     public Task(String content) {
         this.content = content;
@@ -39,5 +42,13 @@ public abstract class Task {
     public abstract boolean getIsDone();
 
     public abstract String getDoBy();
+
+    protected void setPriority(int n){
+        this.priority = n;
+    }
+
+    protected int getPriority(){
+        return this.priority;
+    }
 
 }

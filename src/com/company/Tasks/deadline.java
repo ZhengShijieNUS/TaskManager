@@ -7,12 +7,14 @@ public class deadline extends todo {
         super(content);
         this.doBy = doBy;
         this.type = "deadline";
+        this.priority = 0;
     }
 
     public deadline(Boolean status, String content, String doBy) {
         super(status, content);
         this.doBy = doBy;
         this.type = "deadline";
+        this.priority = 0;
     }
 
     @Override

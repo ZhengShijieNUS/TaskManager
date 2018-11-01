@@ -1,6 +1,5 @@
 package com.company.Tasks;
 
-import com.company.Tasks.Task;
 /**
  * The TaskList class that is responsible for keeping the in-memory task list.
  */
@@ -75,4 +74,21 @@ public class TaskList {
         getTasksAtIndex(n).setDescription(content);
     }
 
+    public void setPriority(int index,int priority){getTasksAtIndex(index).setPriority(priority);}
+
+    public void orderByPriority(String line){
+        if(line.equals("orderByASC")){
+            tasks.sort(new SortByASC());
+        }else if(line.equals("orderByDSC")){
+            tasks.sort(new SortByDSC());
+        }
+    }
+
+    public void removeAllCompletedTask(){
+        for(Task t:tasks){
+            if(t.getIsDone()){
+                tasks.remove(t);
+            }
+        }
+    }
 }

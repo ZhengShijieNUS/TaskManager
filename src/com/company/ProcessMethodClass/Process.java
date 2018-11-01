@@ -11,6 +11,10 @@ import java.io.IOException;
  * Process class stores all process that involved.Key-in mode and File Read mode implementation is defined here.
  */
 public class Process {
+
+    public Process() {
+    }
+
     /**
      * The setCompleted method is a process that set the status of a specified task to be done.
      *
@@ -22,7 +26,6 @@ public class Process {
         try {
             int index = Integer.parseInt(line.substring("done".length()).trim());
             tasks.getTasksAtIndex(index - 1).setDone(true);
-            Print.printTaskInList(tasks);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("The content format is wrong.");
         }
@@ -39,12 +42,14 @@ public class Process {
      * @param UI is the Ui that interact with user
      * @param tasks is the TaskList that store all the tasks
      */
-    public static void keyInMode(Ui UI, TaskList tasks) {
+    public void keyInMode(Ui UI, TaskList tasks) {
+        Print print = new Print();
         String line;
         boolean isExit = false;
         while (!isExit) {
             try {
-                UI.showMessage("Your task?(todo/deadline/print/exit/remove (index)/removeAll/modify(with)");
+                UI.showMessage("Your task?");
+                UI.showMessage("Command List:todo/deadline/print/exit/remove (index)/removeAll/modify(with)/priority(with)/orderByASC/orderByDSC/removeCompletedTask");
                 line = UI.readUserCommand();
                 switch (Parser.getCommandWord(line)) {
                     case "exit":
@@ -54,39 +59,61 @@ public class Process {
                     case "todo":
                         // todo: add code here
                         tasks.addTask(Parser.createTodo(line));
-                        Print.printTaskInList(tasks);
+                        print.printTaskInList(tasks);
                         break;
                     case "deadline":
                         tasks.addTask(Parser.createDeadline(line));
-                        Print.printTaskInList(tasks);
+                        print.printTaskInList(tasks);
                         break;
                     case "print":
                         // print all task
-                        Print.printTasks(UI, tasks);
+                        print.printTasks(UI, tasks);
                         break;
                     case "done":
                         if (checkValidity(tasks, Parser.getIndex(line))) {
-                            Process.setCompleted(tasks, line);
+                            setCompleted(tasks, line);
                         }
+                        print.printTaskInList(tasks);
                         break;
                     case "remove":
                         if (checkValidity(tasks, Parser.getIndex(line))) {
                             tasks.removeTask(Parser.getIndex(line) - 1);
                         }
+                        print.printTaskInList(tasks);
                         break;
                     case "removeAll":
                         tasks.removeAllTask();
+                        UI.showMessage("All tasks have been successfully removed.");
+                        print.printTaskInList(tasks);
+                        break;
+                    case "removeCompletedTask":
+                        tasks.removeAllCompletedTask();
+                        UI.showMessage("Remove all completed task successfully");
+                        print.printTaskInList(tasks);
                         break;
                     case "modify":
                         if (checkValidity(tasks, Parser.getIndex(line))) {
                             tasks.modifyDescription(Parser.getIndex(line) - 1, Parser.getContent(line));
                         }
+                        UI.showMessage("The content of task at "+Integer.toString(Parser.getIndex(line))+" has been modified");
+                        break;
+                    case"priority":
+                        if(checkValidity(tasks,Parser.getIndex(line))) {
+                            tasks.setPriority(Parser.getIndex(line) - 1, Integer.parseInt(Parser.getContent(line)));
+                        }
+                        UI.showMessage("The priority of task at "+Integer.toString(Parser.getIndex(line))+" has been changed to "+Parser.getContent(line));
+                        break;
+                    case"orderByASC":
+                        tasks.orderByPriority(Parser.getCommandWord(line));
+                        print.printTasks(UI, tasks);
+                        break;
+                    case"orderByDSC":
+                        tasks.orderByPriority(Parser.getCommandWord(line));
+                        print.printTasks(UI, tasks);
                         break;
                     default:
-                        Print.printError(UI);
+                        print.printError(UI);
                 }
-            } catch (TaskManagerException e) {
-                Print.printError(e.getMessage());
             } catch(Exception e){
                 Print.printError(e.getMessage());
             }
@@ -104,7 +131,9 @@ public class Process {
      * @param UI is the Ui that interact with user
      * @param tasks is the TaskList that store all the tasks
      */
-    public static void readFileMode(Ui UI, TaskList tasks) {
+    public void readFileMode(Ui UI, TaskList tasks) {
+        Process process = new Process();
+        Print print = new Print();
         UI.showMessage("Please enter the input file path: ");
         Storage storage = new Storage(UI.readUserCommand());
         UI.showMessage("Save to same file?(Enter 'N' to save in different files,default will be save to the same file) ");
@@ -115,10 +144,10 @@ public class Process {
         }
 
         if (storage.load(tasks)) {
-            Process.keyInMode(UI, tasks);
+            process.keyInMode(UI, tasks);
             try {
                 storage.save(tasks);
-                Print.printPath(storage);
+                print.printPath(storage);
             } catch (IOException e) {
                 UI.showMessage("Problem encountered while updating file" + e.getMessage());
             }

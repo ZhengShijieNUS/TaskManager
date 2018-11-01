@@ -15,6 +15,7 @@ public class todo extends Task {
         super(content);
         this.isDone = false;
         this.type = "todo";
+        this.priority = 0;
     }
 
     /**
@@ -36,7 +37,7 @@ public class todo extends Task {
         } else {
             done = "No";
         }
-        return super.getDescription() + System.lineSeparator() + "is done? " + done;
+        return super.getDescription() + System.lineSeparator() + "is done? " + done + System.lineSeparator()+"Priority: " + priority;
     }
 
     public String getDescription(boolean onlyDescription) {
@@ -62,4 +63,6 @@ public class todo extends Task {
     public String getDoBy() {
         return null;
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.company.ProcessManageObject;
 
 import com.company.Tasks.TaskList;
+import com.company.ProcessMethodClass.Process;
 
 /**
  * TaskManager class is the main class that contain the procedure of how the TaskManager works.
@@ -15,6 +16,7 @@ public class TaskManager {
     public void run() {
         TaskList tasks = new TaskList();
         Ui UI = new Ui();
+        Process process = new Process();
         String line;
         boolean isContinue = true;
         UI.showMessage("Welcome to TaskManager-Level6!");
@@ -24,11 +26,11 @@ public class TaskManager {
             switch (line.trim()) {
                 case "File Read":
                     UI.showMessage("You enter the File Read mode successfully");
-                    com.company.ProcessMethodClass.Process.readFileMode(UI, tasks);
+                    process.readFileMode(UI, tasks);
                     break;
                 case "Key-in":
                     UI.showMessage("You enter the key-in mode successfully");
-                    com.company.ProcessMethodClass.Process.keyInMode(UI, tasks);
+                    process.keyInMode(UI, tasks);
                     break;
             }
 
