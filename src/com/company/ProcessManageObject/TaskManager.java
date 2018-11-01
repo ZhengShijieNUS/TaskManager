@@ -7,6 +7,9 @@ import com.company.ProcessMethodClass.Process;
  * TaskManager class is the main class that contain the procedure of how the TaskManager works.
  */
 public class TaskManager {
+    private TaskList tasks = new TaskList();
+    private Ui UI = new Ui();
+    private Process process = new Process();
 
     /**
      * run() is the main method that contains the logic of how the program working.It will ask user to choose either File
@@ -14,9 +17,6 @@ public class TaskManager {
      * or exit the program.
      */
     public void run() {
-        TaskList tasks = new TaskList();
-        Ui UI = new Ui();
-        Process process = new Process();
         String line;
         boolean isContinue = true;
         UI.showMessage("Welcome to TaskManager-Level6!");
