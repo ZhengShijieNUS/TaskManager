@@ -16,9 +16,9 @@ class ConverterTest {
     @Test
     void convertTaskToString() {
         todo Todo = new todo(true, "read book");
-        assertEquals("T | 1 | read book", Converter.convertTaskToString(Todo));
+        assertEquals("T | 1 | read book | 0", Converter.convertTaskToString(Todo));
 
         deadline Deadline = new deadline("read the book", "tonight");
-        assertEquals("D | 0 | read the book | tonight", Converter.convertTaskToString(Deadline));
+        assertEquals("D | 0 | read the book | tonight | 0", Converter.convertTaskToString(Deadline));
     }
 }

@@ -28,6 +28,9 @@ public class Converter {
         String isDone;
         String content;
         String doBy;
+        String priority;
+
+        priority = Integer.toString(task.getPriority());
 
         if (task.getIsDone()) {
             isDone = "1";
@@ -41,11 +44,11 @@ public class Converter {
 
         if (task.getType().equals("todo")) {
             type = "T";
-            s = type + " | " + isDone + " | " + content;
+            s = type + " | " + isDone + " | " + content + " | "+ priority;
         } else if (task.getType().equals("deadline")) {
             type = "D";
             doBy = task.getDoBy();
-            s = type + " | " + isDone + " | " + content + " | " + doBy;
+            s = type + " | " + isDone + " | " + content + " | " + doBy + " | "+ priority;
         }
 
         return s;

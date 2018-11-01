@@ -1,10 +1,10 @@
 package com.company.Tasks;
 
+import java.util.ArrayList;
+
 /**
  * The TaskList class that is responsible for keeping the in-memory task list.
  */
-import java.util.ArrayList;
-
 public class TaskList {
     private ArrayList<Task> tasks;
 
@@ -77,9 +77,9 @@ public class TaskList {
     public void setPriority(int index,int priority){getTasksAtIndex(index).setPriority(priority);}
 
     public void orderByPriority(String line){
-        if(line.equals("orderByASC")){
+        if(line.equals("sortByASC")){
             tasks.sort(new SortByASC());
-        }else if(line.equals("orderByDSC")){
+        }else if(line.equals("sortByDSC")){
             tasks.sort(new SortByDSC());
         }
     }

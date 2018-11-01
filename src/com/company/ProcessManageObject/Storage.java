@@ -23,7 +23,7 @@ public class Storage {
     /**
      * Construct a Storage object.
      *
-     * @param input_path
+     * @param input_path is the input path of file.
      */
     public Storage(String input_path) {
         this.input_path = input_path;
@@ -32,7 +32,7 @@ public class Storage {
 
     /**
      * Get the output path that stored in the storage object.
-     * @return
+     * @return the output file that user wants to store
      */
     public String getOutputPath() {
         return this.output_path;
@@ -74,8 +74,6 @@ public class Storage {
      * @throws IOException if the the output path is wrong.
      */
     public void save(TaskList tasks) throws IOException {
-        //Files.delete(Paths.get(path));
-        //FileWriter fw = new FileWriter(path,true);
         FileWriter fw = new FileWriter(output_path);
         for (int i = 0; i < tasks.getSize(); i++) {
             String s = Converter.convertTaskToString(tasks.getTasksAtIndex(i));
@@ -92,7 +90,7 @@ public class Storage {
      * @throws FileNotFoundException if the file is not found.
      */
     //helper function on read files
-    public static List<String> getLines(String path) throws FileNotFoundException {
+    private static List<String> getLines(String path) throws FileNotFoundException {
         List<String> store = new ArrayList<>();
         File f = new File(path);
         Scanner s = new Scanner(f);

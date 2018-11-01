@@ -49,7 +49,7 @@ public class Process {
         while (!isExit) {
             try {
                 UI.showMessage("Your task?");
-                UI.showMessage("Command List:todo/deadline/print/exit/remove (index)/removeAll/modify(with)/priority(with)/orderByASC/orderByDSC/removeCompletedTask");
+                UI.showMessage("Command List:todo/deadline/print/exit/remove (index)/removeAll/modify(with)/priority(with)/sortByASC/sortByDSC/removeCompletedTask");
                 line = UI.readUserCommand();
                 switch (Parser.getCommandWord(line)) {
                     case "exit":
@@ -103,17 +103,18 @@ public class Process {
                         }
                         UI.showMessage("The priority of task at "+Integer.toString(Parser.getIndex(line))+" has been changed to "+Parser.getContent(line));
                         break;
-                    case"orderByASC":
+                    case"sortByASC":
                         tasks.orderByPriority(Parser.getCommandWord(line));
                         print.printTasks(UI, tasks);
                         break;
-                    case"orderByDSC":
+                    case"sortByDSC":
                         tasks.orderByPriority(Parser.getCommandWord(line));
                         print.printTasks(UI, tasks);
                         break;
                     default:
                         print.printError(UI);
                 }
+                UI.showMessage(System.lineSeparator());
             } catch(Exception e){
                 Print.printError(e.getMessage());
             }

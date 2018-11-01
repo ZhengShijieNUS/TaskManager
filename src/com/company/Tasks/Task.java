@@ -47,7 +47,7 @@ public abstract class Task{
         this.priority = n;
     }
 
-    protected int getPriority(){
+    public int getPriority(){
         return this.priority;
     }
 
