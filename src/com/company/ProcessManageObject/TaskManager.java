@@ -45,6 +45,7 @@ public class TaskManager {
                     line = UI.readUserCommand();
                     if (line.trim().equals("Y") || line.trim().equals("y")) {
                         tasks.removeAllTask();
+                        assert tasks.getSize()==0 :"Tasks list should be cleared";
                     }
                     UI.showMessage("Mode(File Read/Key-in): ");
             }

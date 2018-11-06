@@ -77,7 +77,9 @@ public class Process {
                         break;
                     case "remove":
                         if (checkValidity(tasks, Parser.getIndex(line))) {
+                            int n = tasks.getSize();
                             tasks.removeTask(Parser.getIndex(line) - 1);
+                            assert tasks.getSize()==n-1:"The size is supposed to reduce by 1";
                         }
                         print.printTaskInList(tasks);
                         break;
