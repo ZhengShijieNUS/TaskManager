@@ -20,7 +20,7 @@ public class TaskManager {
         String line;
         boolean isContinue = true;
         UI.showMessage("Welcome to TaskManager-Level6!");
-        UI.showMessage("Mode(File Read/Key-in): ");
+        UI.showMessage("Mode(File Read/Key-in(by Default): ");
         while (isContinue) {
             line = UI.readUserCommand();
             switch (line.trim()) {
@@ -28,7 +28,7 @@ public class TaskManager {
                     UI.showMessage("You enter the File Read mode successfully");
                     process.readFileMode(UI, tasks);
                     break;
-                case "Key-in":
+                default:
                     UI.showMessage("You enter the key-in mode successfully");
                     process.keyInMode(UI, tasks);
                     break;

@@ -48,8 +48,7 @@ public class Process {
         boolean isExit = false;
         while (!isExit) {
             try {
-                UI.showMessage("Your task?");
-                UI.showMessage("Command List:todo/deadline/print/exit/remove (index)/removeAll/modify(with)/priority(with)/sortByASC/sortByDSC/removeCompletedTask");
+                UI.showMessage("Your task?(Enter 'help' for command list)");
                 line = UI.readUserCommand();
                 switch (Parser.getCommandWord(line)) {
                     case "exit":
@@ -112,6 +111,9 @@ public class Process {
                     case"sortByDSC":
                         tasks.orderByPriority(Parser.getCommandWord(line));
                         print.printTasks(UI, tasks);
+                        break;
+                    case"help":
+                        print.printHelp(UI);
                         break;
                     default:
                         print.printError(UI);

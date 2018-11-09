@@ -53,4 +53,21 @@ public class Print {
         System.out.println("The file is successfully save to" + storage.getOutputPath());
     }
 
+    void printHelp(Ui UI){
+        UI.showMessage("Operation command:");
+        UI.showMessage("    exit: 'exit'.");
+        UI.showMessage("    print all tasks in task list:'print'");
+        UI.showMessage("Create tasks command:");
+        UI.showMessage("    create a todo task: 'todo + (content)'.");
+        UI.showMessage("    create a deadline task:'deadline + (content) + /by + (content)'");
+        UI.showMessage("Tasks modification command:");
+        UI.showMessage("    remove tasks at index n: 'remove + (index)'.");
+        UI.showMessage("    remove all completed tasks:'removeCompletedTask'");
+        UI.showMessage("    remove all tasks:'removeAll'");
+        UI.showMessage("    modify a task content: 'modify + (index) + with + (content)'.");
+        UI.showMessage("    set a task with a certain priority:'priority + (index) + with + (priority)'");
+        UI.showMessage("    sort the task list by ascending order:'sortByASC'");
+        UI.showMessage("    sort the task list by descending order:'sortByDSC'");
+    }
+
 }
